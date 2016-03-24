@@ -23,4 +23,8 @@ ports are available in the host.
 After it is done you should be able to access the magento setup by going to
 [http://localhost:5000/setup/index.php](http://localhost:5000/setup/index.php)
 
-The password for the mysql server is pass123 and the server name is sqlserver.
+### MySQL credentials
+
+* Username: magento
+* Database: magento
+* Password: pass123
