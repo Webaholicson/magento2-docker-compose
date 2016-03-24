@@ -4,7 +4,7 @@ This project sets up and environment for running Magento 2.
 This will setup containers for NGINX, MySQl, PHP and a busybox container
 used to hold the Magento 2 source code.
 
-### Pre-requsites
+### Prerequisites
 
 You should have docker engine and docker compose installed.
 Read instructions [here](https://docs.docker.com/compose/install/)
