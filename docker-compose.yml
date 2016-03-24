@@ -1,0 +1,30 @@
+magefiles:
+  container_name: magefiles
+  image: busybox
+  volumes:
+    - "./src:/var/www/html"
+magesql:
+  container_name: magesql
+  image: mysql
+  environment:
+    - MYSQL_ROOT_PASSWORD=pass123
+magephp:
+  build: .
+  container_name: magephp
+  links:
+    - "magesql:sqlserver"
+  volumes_from:
+    - magefiles
+magenginx:
+  container_name: magenginx
+  image: nginx
+  links:
+    - "magephp:phpfpmserver"
+    - "magesql:sqlserver"
+  volumes:
+    - ./nginx:/etc/nginx
+  volumes_from:
+    - magefiles
+  ports:
+    - "5000:80"
+    - "5001:443"
