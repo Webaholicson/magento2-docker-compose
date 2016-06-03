@@ -17,15 +17,16 @@ ports are available in the host.
 
 ### Instructions
 
-1. Clone the repository and `cd` into the directory
-2. Add your Magento 2 files to the src folder
-3. Run `docker-compose up -d`
+1. Map docker-magento.localhost.com to 127.0.0.1 on your hosts file
+2. Clone the repository and `cd` into the directory
+3. Add your Magento 2 files to the src folder
+4. Run `docker compose up`
 
-After it is done you should be able to access the Magento setup by going to
-[http://localhost:5000/setup/index.php](http://localhost:5000/setup/index.php)
+After it is done you should be able to access the magento setup by going to
+[http://docker-magento.localhost.com:5000/setup/index.php](http://docker-magento.localhost.com:5000/setup/index.php)
 
 ### MySQL credentials
 
-* Username: magento
+* Username: root
 * Database: magento
 * Password: pass123
