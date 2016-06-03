@@ -3,16 +3,26 @@ magefiles:
   image: busybox
   volumes:
     - "./src:/var/www/html"
+mysqlfiles:
+  container_name: mysqlfiles
+  image: busybox
+  volumes:
+    - "./mysql/conf.d:/var/log/mysql/conf.d"
+    - "./mysql/log:/var/log/mysql"
+    - "./mysql/setup.sql:/docker-entrypoint-initdb.d/setup.sql"
+nginxfiles:
+  container_name: nginxfiles
+  image: busybox
+  volumes:
+    - ./nginx:/etc/nginx
 magesql:
   container_name: magesql
   image: mysql
   environment:
     - MYSQL_ROOT_PASSWORD=pass123
     - MYSQL_DATABASE=magento
-    - MYSQL_USER=magento
-  volumes:
-    - "./mysql/my.cnf:/etc/mysql/my.cnf"
-    - "./mysql/log:/var/log/mysql"
+  volumes_from:
+    - mysqlfiles
 magephp:
   build: .
   container_name: magephp
@@ -26,10 +36,9 @@ magenginx:
   links:
     - "magephp:phpfpmserver"
     - "magesql:sqlserver"
-  volumes:
-    - ./nginx:/etc/nginx
   volumes_from:
     - magefiles
+    - nginxfiles
   ports:
     - "5000:80"
     - "5001:443"

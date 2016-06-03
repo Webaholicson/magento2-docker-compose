@@ -1,1 +1,2 @@
-create database magento;
+DROP DATABASE IF EXISTS magento;
+CREATE DATABASE magento;
