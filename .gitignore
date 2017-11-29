@@ -1,0 +1,4 @@
+mysql/log/*.log
+nginx/*.log
+nginx/*.pid
+src/*
