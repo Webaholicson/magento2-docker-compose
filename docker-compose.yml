@@ -24,7 +24,7 @@ magesql:
   volumes_from:
     - mysqlfiles
 magephp:
-  build: .
+  build: php
   container_name: magephp
   links:
     - "magesql:sqlserver"
