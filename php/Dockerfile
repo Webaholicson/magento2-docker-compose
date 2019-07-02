@@ -16,4 +16,5 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-configure gd --with-png-dir=/usr/include/ --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-install -j$(nproc) gd
 
+COPY php_errors.log /var/log/php/
 COPY php.ini /usr/local/etc/php/

@@ -30,6 +30,8 @@ magephp:
     - "magesql:sqlserver"
   volumes_from:
     - magefiles
+  volumes:
+    - ./data:/var/lib/mysql
 magenginx:
   container_name: magenginx
   image: nginx
@@ -42,3 +44,6 @@ magenginx:
   ports:
     - "5000:80"
     - "5001:443"
+mailhog:
+    container_name: magemail
+    image: mailhog
